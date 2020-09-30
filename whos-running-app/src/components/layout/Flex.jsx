@@ -6,7 +6,10 @@ const Flex = styled.div`
     justify-content: ${props => props.justifyContent || 'center'};
     align-items: ${props => props.alignItems || ''};
     flex-wrap: ${props => props.wrap || 'nowrap'};
-    height: ${props => props.height || ''}
+    height: ${props => props.height || ''};
+    padding: ${props => props.padding || ''};
+    margin: ${props => props.margin || ''};
+    width: ${props => props.width || ''};
 `
 
 export default Flex
