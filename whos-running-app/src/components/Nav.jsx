@@ -7,6 +7,7 @@ import {
 	DropdownMenu,
 } from '../../node_modules/styled-dropdown-component';
 import { Transition } from 'styled-base-components';
+import NavStyled from './Nav.styled';
 
 const Nav = ({ setSelected }) => {
 	const [hidden, setHidden] = useState(true);
@@ -22,6 +23,7 @@ const Nav = ({ setSelected }) => {
 		);
 	});
 	return (
+		<NavStyled>
 		<Dropdown>
 			<Button dropdownToggle onClick={() => setHidden(!hidden)}>
 				Branches
@@ -35,6 +37,7 @@ const Nav = ({ setSelected }) => {
 				</DropdownMenu>
 			</Transition>
 		</Dropdown>
+		</NavStyled>
 	);
 };
 
