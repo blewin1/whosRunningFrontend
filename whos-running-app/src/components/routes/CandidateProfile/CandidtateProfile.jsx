@@ -33,11 +33,13 @@ const CandidatePage = (props) => {
 					<a href={candi.facebook}> Facebook </a>
 					<a href={candi.campaign_website}> Campaign website </a>
 				</div>
-			);
-		}
+			)
+		} else {
+
+        }
     });
     let notCandidateInfo = candidates.map((candi, index) => {
-		if (props.match.params.candidateId !== candi.id) {
+		if (props.match.params.candidateId == candi.id) {
 			return (
 				<div>
 					<img src={candi.image_url} alt='pic' />
