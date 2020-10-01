@@ -14,6 +14,8 @@ import CandidatePageStyled from "./CandidatePage.styled";
 import { Bookmark } from "@styled-icons/boxicons-regular/Bookmark";
 import { BookmarkFill } from "@styled-icons/bootstrap/BookmarkFill";
 import { UserContext } from "../../../utils/userContext.js";
+import Login from "../../layout/Login/Login";
+import Modal from "../../layout/Modal/Modal";
 import {
     addFavorite as APIaddFavorite,
 	getUser,
@@ -22,10 +24,15 @@ import {
 
 let role = "";
 
+
+
 const CandidatePage = (props) => {
     const [candidates, setCandidates] = useState([]);
     const [selectedPosition, setSelectedPostion] = useState(0);
-    const { user, setUser } = useContext(UserContext);
+	const { user, setUser } = useContext(UserContext);
+	const [loginOpen, setLoginOpen] = useState(false);
+
+    const closeLogin = () => setLoginOpen(false);
 
     useEffect(() => {
         const initialize = async () => {
@@ -35,6 +42,10 @@ const CandidatePage = (props) => {
     }, []);
 
     const addFavorite = async () => {
+		if(!user) {
+			setLoginOpen(true)
+			return;
+		}
         await APIaddFavorite(user.id, parseInt(props.match.params.candidateId));
         setUser(await getUser());
     };
@@ -120,6 +131,13 @@ const CandidatePage = (props) => {
             </nav>
             {candidateInfo}
             {notCandidateInfo}
+			{loginOpen ? (
+                <Modal close={closeLogin}>
+                    <Login closeLogin={closeLogin} />
+                </Modal>
+            ) : (
+                ""
+            )}
         </div>
     );
 };

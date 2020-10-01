@@ -40,7 +40,7 @@ const UserDashboard = ({ history }) => {
 
    
 
-    const favorites = user ? user.candidates.map((el, i) => {
+    const favorites = user && user.candidates ? user.candidates.map((el, i) => {
         return (
             <CandidateOption
                 key={i}
