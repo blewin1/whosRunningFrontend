@@ -53,7 +53,6 @@ const Login = ({ closeLogin }) => {
             return true;
         } catch (err) {
             console.error(err)
-            return false;
         }
     };
 
@@ -65,10 +64,15 @@ const Login = ({ closeLogin }) => {
         try {
             const newUser = await createUser(userInfo);
             setUser(newUser)
+<<<<<<< HEAD
             return true
         } catch (err) {
             console.error(err)
             return false;
+=======
+        } catch (err) {
+            console.error(err)
+>>>>>>> added error checking for already used email address
         }
     };
 
