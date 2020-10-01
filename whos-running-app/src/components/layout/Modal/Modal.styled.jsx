@@ -6,8 +6,9 @@ export default styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,.6);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 50;
@@ -22,7 +23,7 @@ export default styled.div`
         align-items: center;
 
         #close-modal {
-            align-self: start;
+            align-self: end;
         }
     }
 `
