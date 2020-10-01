@@ -14,7 +14,6 @@ const Nav = ({ setSelected }) => {
 		const handleClick = () => {
 			setSelected(index);
 			setHidden(true);
-			console.log(names, index);
 		};
 		return (
 			<DropdownItem onClick={handleClick} key={index}>
