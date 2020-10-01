@@ -28,7 +28,11 @@ const Login = ({ closeLogin }) => {
     const submitForm = async (event) => {
         event.preventDefault();
         if (creatingAccount) {
-            await createAccount();
+            const success = await createAccount();
+            if (!success){
+                setError("Account already exists")
+                return;
+            }
         } else {
             const success = await login();
             if (!success){
@@ -45,7 +49,7 @@ const Login = ({ closeLogin }) => {
             const user = await API_login(input.email)
             setUser(user)
         } catch (err) {
-            console.err(err)
+            console.error(err)
         }
     };
 
@@ -54,8 +58,12 @@ const Login = ({ closeLogin }) => {
         if (address) {
             userInfo.address = address;
         }
-        const newUser = await createUser(userInfo);
-        setUser(newUser)
+        try {
+            const newUser = await createUser(userInfo);
+            setUser(newUser)
+        } catch (err) {
+            console.error(err)
+        }
     };
 
     return (
