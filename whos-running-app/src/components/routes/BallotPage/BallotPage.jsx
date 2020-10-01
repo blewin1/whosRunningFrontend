@@ -19,7 +19,6 @@ const BallotPage = ({ history }) => {
     }, []);
 
 
-
     const filteredCandidates = candidates
         .filter((c) => c.position === positions[selectedPosition].name)
         .map((el, i) => (
