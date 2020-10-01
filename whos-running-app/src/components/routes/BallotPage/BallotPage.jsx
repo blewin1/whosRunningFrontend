@@ -5,6 +5,7 @@ import { getCandidates } from "../../../utils/apiUtils";
 import { positions } from "./BallotPositionsList";
 import CandidatesContainer from "../../Styled/CandidatesContainer";
 import CandidateOption from "../../CandidateOption/CandidateOption";
+import BallotStyled from "./Ballot.styled";
 
 const BallotPage = ({ history }) => {
     const [candidates, setCandidates] = useState([]);
@@ -34,21 +35,27 @@ const BallotPage = ({ history }) => {
 
 
     return (
-		<div>
-			<HeaderNav />
-			<main>
-				<h2>
-					New Hampshire 2020
-					<br />
-					November Ballot
-				</h2>
-				<p>November 3rd, 2020</p>
-				<Nav setSelected={setSelectedPostion} />
-				<h4>{positions[selectedPosition].name}</h4>
-				<p>{positions[selectedPosition].description}</p>
-				<CandidatesContainer>{filteredCandidates}</CandidatesContainer>
-			</main>
-		</div>
+		<BallotStyled>
+			<div>
+				<HeaderNav />
+				<main className='BallotContainer'>
+					<h2 className='ballotTitle'>
+						New Hampshire 2020
+						<br />
+						November Ballot
+					</h2>
+					<p className='ballotSub'>November 3rd, 2020</p>
+					<Nav setSelected={setSelectedPostion} />
+					<h4 className='positionName'>{positions[selectedPosition].name}</h4>
+					<p className='ballotDescription'>
+						{positions[selectedPosition].description}
+					</p>
+					<CandidatesContainer>
+						{filteredCandidates}
+					</CandidatesContainer>
+				</main>
+			</div>
+		</BallotStyled>
 	);
 };
 
