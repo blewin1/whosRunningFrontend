@@ -35,24 +35,4 @@ const HeaderNav = (props) => {
     );
         }
     export default HeaderNav;
-// import React from 'react';
-// import NavStyled from './Nav.styled';
 
-// const HeaderNav = (props) => {
-// 	return (
-// 		<NavStyled >
-
-// 		<div>
-// 			<header className='header'>
-// 				<p className='signIn'>
-// 					Welcome!
-// 					<br/>
-// 					<a href='../../AddressForm/AddressForm.jsx' style={{textDecoration:'underline',color:'white'}}>Sign In</a>
-
-// 				</p>
-// 				<img src='img/whosIcon.png' alt='icon' className='whosIcon'/>
-// 			</header>
-// 		</div>
-// 		</NavStyled>
-// 	);
-// };
