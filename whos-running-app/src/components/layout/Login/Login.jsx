@@ -34,7 +34,11 @@ const Login = ({ closeLogin }) => {
                 return;
             }
         } else {
-            await login();
+            const success = await login();
+            if (!success){
+                setError("Incorrect Email")
+                return;
+            }
         }
         setInput({ email: "", name: "" });
         closeLogin();
@@ -90,9 +94,9 @@ const Login = ({ closeLogin }) => {
                     value={input.email}
                     placeholder="email@example.com"
                 />
+            {error ? <span className="form-error">{error}</span> : ""}
                 <Button type="submit">Submit</Button>
             </Flex>
-            {error ? <span className="form-error">{error}</span> : ""}
             <span>
                 {creatingAccount
                     ? "Already have an account? "
