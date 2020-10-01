@@ -24,7 +24,7 @@ const App = () => {
 	}, []);
 
 	return (
-		<GlobalStyles>
+		<>
 			<GlobalStyles />
 			<Switch>
 				<Route exact path='/' component={HomePage} />
@@ -38,7 +38,7 @@ const App = () => {
 				/>
 				<Route path='*' render={() => <Redirect to='/' />} />
 			</Switch>
-		</GlobalStyles>
+		</>
 	);
 };
 
