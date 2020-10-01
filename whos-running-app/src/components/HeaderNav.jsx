@@ -23,7 +23,6 @@ const HeaderNav = ({ history }) => {
                             {user.name}
                         </span>
                         <span>v</span>
-                        <BookmarkFill>{user.candidates.length}</BookmarkFill>
                     </span>
                 ) : (
                     <p>
