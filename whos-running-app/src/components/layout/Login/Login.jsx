@@ -36,7 +36,7 @@ const Login = ({ closeLogin }) => {
         } else {
             const success = await login();
             if (!success){
-                setError("Incorrect Email")
+                setError("User Not Found")
                 return;
             }
         }
@@ -47,9 +47,13 @@ const Login = ({ closeLogin }) => {
     const login = async () => {
         try {
             const user = await API_login(input.email)
+            console.log(user)
+            if(user.status === 401) return false;
             setUser(user)
+            return true;
         } catch (err) {
             console.error(err)
+            return false;
         }
     };
 
@@ -61,8 +65,10 @@ const Login = ({ closeLogin }) => {
         try {
             const newUser = await createUser(userInfo);
             setUser(newUser)
+            return true
         } catch (err) {
             console.error(err)
+            return false;
         }
     };
 

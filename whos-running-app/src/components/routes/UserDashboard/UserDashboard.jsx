@@ -1,11 +1,15 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../../utils/userContext.js";
 import { BoxArrowUpRight } from "@styled-icons/bootstrap/BoxArrowUpRight";
-import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
-import { Link } from "react-router-dom";
+import { ArrowIosBackOutline } from "@styled-icons/evaicons-outline/ArrowIosBackOutline"
 import HeaderNav from "../../HeaderNav.jsx";
 import CandidateOption from "../../CandidateOption/CandidateOption.jsx";
 import CandidatesContainer from "../../Styled/CandidatesContainer.jsx";
+import Button from "../../Styled/Button.styled.jsx";
+import ElectionCard from "./ElectionCard/ElectionCard.jsx";
+import { Link } from "react-router-dom";
+import UserDashboardStyled from "./UserDashboard.styled.jsx";
+
 
 const UserDashboard = ({ history }) => {
     const { user, address, setAddress } = useContext(UserContext); //SetAddress just here temporarily
@@ -15,7 +19,7 @@ const UserDashboard = ({ history }) => {
 
         //check if address exists in context
         if (!address) {
-            setAddress({ city: "Handover", state: "NH" });
+            
         }
 
         //if not, check if user exists in localstorage and call api to get user information
@@ -33,9 +37,9 @@ const UserDashboard = ({ history }) => {
     // 	);
     // }
 
-    if (!user || !user.candidates) return <span>loading...</span>;
+   
 
-    const favorites = user.candidates.map((el, i) => {
+    const favorites = user ? user.candidates.map((el, i) => {
         return (
             <CandidateOption
                 key={i}
@@ -44,34 +48,28 @@ const UserDashboard = ({ history }) => {
                 party={el.party_affiliation}
             />
         );
-    });
+    }) : [];
 
     if (!address) {
         return <h1>Loading...</h1>;
     }
 
     return (
-        <div>
+        <UserDashboardStyled>
             <HeaderNav />
-            <h2>Name Here</h2>
-            <span>{`${address.city}, ${address.state}`}</span>
-            <Link to="/ballot">
-                {/* {BallotPage} */}
-                <ArrowIosForwardOutline className="icon" />
-            </Link>
+            <Link to='/' className="prev-page"> <ArrowIosBackOutline className="icon back-arrow" />Change Location</Link>
+            <h2>{`${address.city}, ${address.state}`}</h2>
 
-            <h1>Upcoming Elections</h1>
-            <h2>New Hampshire 2020 Ballot</h2>
-            <h6>November 3, 2020</h6>
-            <h4>32 days until the election</h4>
-            <h1>My Candidates</h1>
+            <h3>Upcoming Elections</h3>
+            <ElectionCard />
+            <h3>My Candidates</h3>
             <CandidatesContainer>
                 {favorites}
             </CandidatesContainer>
-            <a href="https://www.usa.gov/register-to-vote">
-                Go Vote <BoxArrowUpRight className="icon" />
-            </a>
-        </div>
+            <Button className="polling-link" as='a' href="https://www.vote.org/">
+                Your Polling Place <BoxArrowUpRight className="icon white" />
+            </Button>
+        </UserDashboardStyled>
     );
 };
 

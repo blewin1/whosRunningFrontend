@@ -5,7 +5,6 @@ const apiBase = "https://whos-running-app-api.herokuapp.com";
 export const getCandidates = async () => {
     try {
         const res = await axios.get(`${apiBase}/candidates`);
-        // console.log(`getCandidate: `, res.data);
         return res.data;
     } catch (err) {
         console.error(err);
@@ -17,8 +16,9 @@ export const getUser = async () => {
     if (userID) {
         try {
             const res = await axios.get(`${apiBase}/users/${userID}`);
-            // console.log(`getUser: `, res.data);
-            return res.data;
+            const address = JSON.parse(res.data.address)
+            console.log("address ",address )
+            return {...res.data, address: address};
         } catch (err) {
             console.error(err);
         }
@@ -27,16 +27,18 @@ export const getUser = async () => {
 
 export const login = async (email) => {
     try {
-        const res = await axios.post(`${apiBase}/users/login`, { user: { email: email } });
-        console.log('LOGIN ', res)
+        const res = await axios.post(`${apiBase}/users/login`, { user: { email: email.toLowerCase() } });
         if (res.status === 200) {
             localStorage.setItem("userID", res.data.id);
-            return res.data;
+            const address = JSON.parse(res.data.address)
+            return {...res.data, address: address};
         } else {
             console.error("User login failed, try again?");
+            return null;
         }
     } catch (err) {
         console.error(err);
+        return null;
     }
 }
 
@@ -45,7 +47,11 @@ export const login = async (email) => {
 //TODO: address to JSON
 export const createUser = async (userInfo) => {
     try {
-        const res = await axios.post(`${apiBase}/users`, { user: userInfo });
+        const address = JSON.stringify(userInfo.address)
+        const email = userInfo.email.toLowerCase();
+        const user = {...userInfo, address: address, email: email}
+        console.log('USER: ', user)
+        const res = await axios.post(`${apiBase}/users`, { user: user });
         if (res.status === 201) {
             localStorage.setItem("userID", res.data.id);
             return res.data;
