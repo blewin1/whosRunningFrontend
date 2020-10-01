@@ -12,7 +12,9 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "styled-button-component": "^4.0.0",
     "styled-components": "^5.2.0",
+    "styled-dropdown-component": "^4.0.0",
     "styled-icons": "^10.21.0"
   },
   "scripts": {
