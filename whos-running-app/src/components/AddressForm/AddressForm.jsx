@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../utils/userContext.js';
 import Flex from '../layout/Flex.jsx';
 import Button from '../Styled/Button.styled.jsx';
 import Input from '../Styled/Input.styled.jsx';
 
 const AddressForm = ({ history }) => {
-	const { setAddress, user, setUser } = useContext(UserContext);
+	const { setAddress, user, setUser, address } = useContext(UserContext);
 
 	const [input, setInput] = useState({
 		address1: '',
@@ -14,6 +14,12 @@ const AddressForm = ({ history }) => {
 		state: '',
 		zip: '',
 	});
+
+	useEffect(()=> {
+		if(address) {
+			setInput({...address});
+		}
+	},[address])
 
 	const handleChange = (event) => {
 		setInput({
