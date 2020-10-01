@@ -15,4 +15,8 @@ html, body {
     length: 40px;
     width: 40px;
   }
+  .form-error {
+    text-align: center;
+    color: red;
+  }
 `
