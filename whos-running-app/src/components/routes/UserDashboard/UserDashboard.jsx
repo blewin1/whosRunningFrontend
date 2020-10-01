@@ -40,7 +40,7 @@ const UserDashboard = ({ history }) => {
 
    
 
-    const favorites = user ? user.candidates.map((el, i) => {
+    const favorites = user && user.candidates ? user.candidates.map((el, i) => {
         return (
             <CandidateOption
                 key={i}
@@ -49,7 +49,7 @@ const UserDashboard = ({ history }) => {
                 party={el.party_affiliation}
             />
         );
-    }) : [];
+    }) : <p>You do not have any chosen candidates. Select a ballot and begin adding to your list.</p>;
 
     if (!address) {
         return <h1>Loading...</h1>;

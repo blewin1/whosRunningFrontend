@@ -8,44 +8,52 @@ import NavStyled from './Nav.styled';
 import whosIcon from './whosIcon.png'
 
 const HeaderNav = ({ history }) => {
-    const { user } = useContext(UserContext);
+    const { user, setUser, setAddress } = useContext(UserContext);
     const [loginOpen, setLoginOpen] = useState(false);
     const closeLogin = () => setLoginOpen(false);
 
+    const logout = () => {
+        localStorage.setItem("UserID", null);
+        setUser(null);
+        setAddress(null);
+        history.push("/");
+    };
+
     return (
-		<NavStyled>
-			<div>
-				<header className='header'>
-					{user ? (
-						<span className='signIn'>
-							Welcome!
-							<span onClick={() => history.push('/dashboard')}>
-								{user.name}
-							</span>
-							<span>v</span>
-							<BookmarkFill>
-								{user.candidates.length}
-							</BookmarkFill>
-						</span>
-					) : (
-						<p className='signIn'>
-							Welcome!
-							<span onClick={() => setLoginOpen(true)}>
-								Sign In
-							</span>
-						</p>
-					)}
+
+        <NavStyled>
+            <div>
+                <header className="header">
+                    {user ? (
+                        <span className="signIn">
+                            Welcome,{" "}
+                            <span onClick={() => history.push("/dashboard")}>
+                                {user.name}!
+                            </span>
+                            <span className="logout" onClick={logout}>
+                                logout
+                            </span>
+                        </span>
+                    ) : (
+                        <p>
+                            Welcome, guest!
+                            <span onClick={() => setLoginOpen(true)}>
+                                Sign In
+                            </span>
+                        </p>
+                    )}
 					<img src={whosIcon} alt='icon' className='whosIcon' />
-				</header>
-				{loginOpen ? (
-					<Modal close={closeLogin}>
-						<Login closeLogin={closeLogin} />
-					</Modal>
-				) : (
-					''
-				)}
-			</div>
-		</NavStyled>
-	);
- }
+                </header>
+                {loginOpen ? (
+                    <Modal close={closeLogin}>
+                        <Login closeLogin={closeLogin} />
+                    </Modal>
+                ) : (
+                    ""
+                )}
+            </div>
+        </NavStyled>
+    );
+};
+
 export default withRouter(HeaderNav);

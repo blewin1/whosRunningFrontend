@@ -23,4 +23,10 @@ html, body {
     color: blue;
     height: 36px;
   }
+  .logout {
+    padding-left: 6px;
+    font-style: italic;
+    font-size: 12px;
+  }
+
 `
