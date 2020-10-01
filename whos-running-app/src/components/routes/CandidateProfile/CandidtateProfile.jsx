@@ -34,9 +34,7 @@ const CandidatePage = (props) => {
 					<a href={candi.campaign_website}> Campaign website </a>
 				</div>
 			)
-		} else {
-
-        }
+		} 
     });
     let notCandidateInfo = candidates.map((candi, index) => {
 		if (props.match.params.candidateId == candi.id) {
