@@ -5,7 +5,7 @@ const apiBase = "https://whos-running-app-api.herokuapp.com";
 export const getCandidates = async () => {
     try {
         const res = await axios.get(`${apiBase}/candidates`);
-        console.log(`getCandidate: `, res.data);
+        // console.log(`getCandidate: `, res.data);
         return res.data;
     } catch (err) {
         console.error(err);
@@ -17,7 +17,7 @@ export const getUser = async () => {
     if (userID) {
         try {
             const res = await axios.get(`${apiBase}/users/${userID}`);
-            console.log(`getUser: `, res.data);
+            // console.log(`getUser: `, res.data);
             return res.data;
         } catch (err) {
             console.error(err);

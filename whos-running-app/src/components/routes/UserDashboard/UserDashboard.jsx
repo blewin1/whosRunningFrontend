@@ -2,11 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../../utils/userContext.js";
 import { BoxArrowUpRight } from "@styled-icons/bootstrap/BoxArrowUpRight";
 import { ArrowIosForwardOutline } from "@styled-icons/evaicons-outline/ArrowIosForwardOutline";
-import BallotPage from "../BallotPage/BallotPage.jsx";
 import { Link } from "react-router-dom";
 import HeaderNav from "../../HeaderNav.jsx";
 import CandidateOption from "../../CandidateOption/CandidateOption.jsx";
-import Flex from "../../layout/Flex.jsx";
 import CandidatesContainer from "../../Styled/CandidatesContainer.jsx";
 
 const UserDashboard = ({ history }) => {
