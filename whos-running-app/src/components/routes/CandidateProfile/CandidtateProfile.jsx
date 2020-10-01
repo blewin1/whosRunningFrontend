@@ -18,19 +18,17 @@ import Login from "../../layout/Login/Login";
 import Modal from "../../layout/Modal/Modal";
 import {
     addFavorite as APIaddFavorite,
-	getUser,
-	removeFavorite as APIremoveFavorite
+    getUser,
+    removeFavorite as APIremoveFavorite,
 } from "../../../utils/apiUtils";
-
+import { KeyboardArrowLeft } from "@styled-icons/material-outlined/KeyboardArrowLeft";
 let role = "";
-
-
 
 const CandidatePage = (props) => {
     const [candidates, setCandidates] = useState([]);
     const [selectedPosition, setSelectedPostion] = useState(0);
-	const { user, setUser } = useContext(UserContext);
-	const [loginOpen, setLoginOpen] = useState(false);
+    const { user, setUser } = useContext(UserContext);
+    const [loginOpen, setLoginOpen] = useState(false);
 
     const closeLogin = () => setLoginOpen(false);
 
@@ -42,17 +40,20 @@ const CandidatePage = (props) => {
     }, []);
 
     const addFavorite = async () => {
-		if(!user) {
-			setLoginOpen(true)
-			return;
-		}
+        if (!user) {
+            setLoginOpen(true);
+            return;
+        }
         await APIaddFavorite(user.id, parseInt(props.match.params.candidateId));
         setUser(await getUser());
     };
     const removeFavorite = async () => {
-		await APIremoveFavorite(user.id, parseInt(props.match.params.candidateId));
-		setUser(await getUser());
-	};
+        await APIremoveFavorite(
+            user.id,
+            parseInt(props.match.params.candidateId)
+        );
+        setUser(await getUser());
+    };
     let candidateInfo = candidates.map((candi, index) => {
         if (props.match.params.candidateId == candi.id) {
             role = candi.position;
@@ -70,14 +71,20 @@ const CandidatePage = (props) => {
                         <h1 className="candiName">{candi.name} </h1>
                         <h3 className="candiPosition">{candi.position} </h3>
                         <div className="favorite">
-							{user &&
-							user.candidates &&
+                            {user &&
+                            user.candidates &&
                             user.candidates.find(
                                 (el) => el.id == props.match.params.candidateId
                             ) ? (
-                                <BookmarkFill onClick={removeFavorite}/>
+                                <BookmarkFill
+                                    onClick={removeFavorite}
+                                    className="bookmark"
+                                />
                             ) : (
-                                <Bookmark onClick={addFavorite} />
+                                <Bookmark
+                                    onClick={addFavorite}
+                                    className="bookmark"
+                                />
                             )}
                         </div>
                         <p className="candiBio">{candi.bio}</p>
@@ -92,10 +99,7 @@ const CandidatePage = (props) => {
                                 {" "}
                                 <Link45deg className="links" Campaign website />
                             </a>
-                            <h3 className="whatPos">
-                                Other Candidates General Election:
-                                {candi.position}
-                            </h3>
+                            <h3 className="whatPos">Other Candidates</h3>
                         </div>
                     </CandidatePageStyled>
                 </div>
@@ -108,30 +112,46 @@ const CandidatePage = (props) => {
             candi.id != props.match.params.candidateId
         ) {
             return (
-                <div>
-                    <span className="line"></span>
-                    <CandidatePageStyled>
-                        <img
-                            className="secondCandi"
-                            src={candi.image_url}
-                            alt="additional candiddates"
-                        />
-                        <h4 className="secondName">{candi.name}</h4>
-                        <h5>{candi.party_affiliation}</h5>
-                    </CandidatePageStyled>
-                </div>
+                <CandidateOption
+                    key={index}
+                    image={candi.image_url}
+                    name={candi.name}
+                    party={candi.party_affiliation}
+                />
             );
+            // return (
+
+            // 	<div >
+            // 		<span className='line'></span>
+            // 		{/* <CandidatePageStyled> */}
+            // 			<img
+            // 				className='secondCandi'
+            // 				src={candi.image_url}
+            // 				alt='additional candiddates'
+            // 			/>
+            // 			<h4 className='secondName'>{candi.name}</h4>
+            // 			<h5>{candi.party_affiliation}</h5>
+            // 		{/* </CandidatePageStyled> */}
+            // 	</div>
+            // );
         }
     });
     return (
-        <div>
+        <div className="container">
             <HeaderNav />
             <nav>
-                <Link to="/ballot"> All Candidates </Link>
+                <Link
+                    to="/ballot"
+                    className="allCand"
+                    style={{ color: "#1FBCDE" }}
+                >
+                    <KeyboardArrowLeft style={{ color: "#1FBCDE" }} />
+                    All Candidates
+                </Link>
             </nav>
             {candidateInfo}
-            {notCandidateInfo}
-			{loginOpen ? (
+            <CandidatesContainer>{notCandidateInfo}</CandidatesContainer>
+            {loginOpen ? (
                 <Modal close={closeLogin}>
                     <Login closeLogin={closeLogin} />
                 </Modal>
