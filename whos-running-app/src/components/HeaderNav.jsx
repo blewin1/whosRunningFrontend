@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Login from './layout/Login/Login'
 import Modal from './layout/Modal/Modal'
 import { UserContext } from "../utils/userContext.js";
+import NavStyled from './Nav.styled';
 
 const HeaderNav = (props) => {
 
@@ -10,12 +11,15 @@ const HeaderNav = (props) => {
 	const closeLogin = () => setLoginOpen(false);
 
     return (
+        <NavStyled >
         <div>
-            <header>
-                <p>
-                    Hi, guest
-                    <span onClick={()=> setLoginOpen(true)}>Sign In</span>
+            <header className='header'>
+                <p className='signIn'>
+                    Welcome!
+ 					<br/>
+                    <span onClick={()=> setLoginOpen(true)} style={{textDecoration:'underline',color:'white'}}>Sign In</span>
                 </p>
+                <img src='img/whosIcon.png' alt='icon' className='whosIcon'/>
             </header>
             {
                 loginOpen ? (
@@ -27,7 +31,10 @@ const HeaderNav = (props) => {
                     )
             }
         </div>
+        </NavStyled>
     );
+        }
+    export default HeaderNav;
 // import React from 'react';
 // import NavStyled from './Nav.styled';
 
@@ -49,5 +56,3 @@ const HeaderNav = (props) => {
 // 		</NavStyled>
 // 	);
 // };
-
-// export default HeaderNav;
