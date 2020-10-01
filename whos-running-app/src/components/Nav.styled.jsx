@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export default styled.div`
-	img {
+	.whosIcon {
 		text-align: left;
 		position: relative;
 		bottom: 60px;
 		left: 2.5rem;
 	}
-	header {
+	.header {
 		background-color: #1fbcde;
 		position: relative;
 		width: 95vw;
@@ -17,10 +17,10 @@ export default styled.div`
 		font-style: normal;
 		font-weight: 700;
 
-		padding: 1rem 1rem 1rem 1rem;
+		padding: 1rem 1rem 2rem 1rem;
 		color: white;
 	}
-	a {
+	.signIn {
 		text-align: right;
 		line-height: 16px;
 	}
