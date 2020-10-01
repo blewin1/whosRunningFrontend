@@ -5,7 +5,7 @@ import Button from '../Styled/Button.styled.jsx';
 import Input from '../Styled/Input.styled.jsx';
 
 const AddressForm = ({ history }) => {
-	const { setAddress } = useContext(UserContext);
+	const { setAddress, user, setUser } = useContext(UserContext);
 
 	const [input, setInput] = useState({
 		address1: '',
@@ -23,6 +23,10 @@ const AddressForm = ({ history }) => {
 	};
 	const submitForm = async (event) => {
 		event.preventDefault();
+		if (user) {
+			const tempUser = { ...user, address: input }
+			setUser(tempUser)
+		}
 		setAddress(input);
 		setInput({ address1: '', address2: '', city: '', state: '', zip: '' });
         history.push('/dashboard');
