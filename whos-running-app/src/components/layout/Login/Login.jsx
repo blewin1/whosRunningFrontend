@@ -36,7 +36,7 @@ const Login = ({ closeLogin }) => {
         } else {
             const success = await login();
             if (!success){
-                setError("User Not Found")
+                setError("Incorrect Email")
                 return;
             }
         }
