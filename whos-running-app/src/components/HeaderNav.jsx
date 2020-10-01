@@ -4,6 +4,8 @@ import Modal from "./layout/Modal/Modal";
 import { UserContext } from "../utils/userContext.js";
 import { withRouter } from "react-router-dom";
 import { BookmarkFill } from "@styled-icons/bootstrap/BookmarkFill";
+import NavStyled from './Nav.styled';
+
 
 const HeaderNav = ({ history }) => {
     const { user } = useContext(UserContext);
@@ -11,11 +13,12 @@ const HeaderNav = ({ history }) => {
     const closeLogin = () => setLoginOpen(false);
 
     return (
+            <NavStyled >
         <div>
-            <header>
+            <header className='header'>
                 {user ? (
-                    <span>
-                        Hi,
+                    <span className='signIn'>
+                        Welcome!
                         <span onClick={() => history.push("/dashboard")}>
                             {user.name}
                         </span>
@@ -24,10 +27,11 @@ const HeaderNav = ({ history }) => {
                     </span>
                 ) : (
                     <p>
-                        Hi, guest
+                        Welcome!
                         <span onClick={() => setLoginOpen(true)}>Sign In</span>
                     </p>
                 )}
+                <img src='img/whosIcon.png' alt='icon' className='whosIcon'/>
             </header>
             {loginOpen ? (
                 <Modal close={closeLogin}>
@@ -37,7 +41,7 @@ const HeaderNav = ({ history }) => {
                 ""
             )}
         </div>
+            </NavStyled>
     );
-};
-
+ }
 export default withRouter(HeaderNav);

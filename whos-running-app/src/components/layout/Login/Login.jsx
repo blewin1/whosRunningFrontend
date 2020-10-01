@@ -36,7 +36,7 @@ const Login = ({ closeLogin }) => {
         } else {
             const success = await login();
             if (!success){
-                setError("User Not Found")
+                setError("Incorrect Email")
                 return;
             }
         }
@@ -53,7 +53,6 @@ const Login = ({ closeLogin }) => {
             return true;
         } catch (err) {
             console.error(err)
-            return false;
         }
     };
 
@@ -65,10 +64,8 @@ const Login = ({ closeLogin }) => {
         try {
             const newUser = await createUser(userInfo);
             setUser(newUser)
-            return true
         } catch (err) {
             console.error(err)
-            return false;
         }
     };
 
