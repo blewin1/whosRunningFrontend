@@ -30,6 +30,13 @@ export default styled.div`
 		line-height: 23px;
 		color: #ff7676;
 	}
+	.ballotDescription {
+		font-family: Noto Sans;
+		font-style: normal;
+		font-size: 12px;
+		line-height: 150%;
+		color: #29395f;
+	}
 	@media (max-width: 700px) {
 		.ballotTitle {
 			padding: 15x;
@@ -43,6 +50,11 @@ export default styled.div`
 		.positionName {
 			font-size: 18px;
 			line-height: 23px;
+		}
+		.ballotDescription {
+			font-size: 12px;
+			line-height: 150%;
+			color: #29395f;
 		}
 	}
 `;
