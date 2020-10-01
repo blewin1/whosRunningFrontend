@@ -24,9 +24,7 @@ const Nav = ({ setSelected }) => {
 	});
 	return (
 		<Dropdown>
-			<Button
-				dropdownToggle
-				onClick={() => setHidden(!hidden)}
+			<Button dropdownToggle onClick={() => setHidden(!hidden)}>
 				Branches
 			</Button>
 			<Transition hidden={hidden}>
