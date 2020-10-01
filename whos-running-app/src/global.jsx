@@ -9,8 +9,6 @@ html, body {
     length: 15px;
     width: 15px;
   }
-  .ballotIcon{
-    length: 40px;
-    width: 40px;
-  }
-`
+ 
+ 
+`;

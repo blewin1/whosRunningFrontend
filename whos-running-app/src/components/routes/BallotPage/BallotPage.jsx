@@ -34,27 +34,22 @@ const BallotPage = ({ history }) => {
 
 
     return (
-        <div>
-            <HeaderNav />
-            <main>
-                <h2>
-                    New Hampshire 2020
-                    <br />
-                    November Ballot
-                </h2>
-                <p>November 3rd, 2020</p>
-                <Nav
-                // description.map((category) =>{
-                //     return (
-
-                //     )
-                // })
-                />
-                <CandidatesContainer>{filteredCandidates}</CandidatesContainer>
-            </main>
-            Ballot Page https://www.npmjs.com/package/tiny-slider-react
-        </div>
-    );
+		<div>
+			<HeaderNav />
+			<main>
+				<h2>
+					New Hampshire 2020
+					<br />
+					November Ballot
+				</h2>
+				<p>November 3rd, 2020</p>
+				<Nav setSelected={setSelectedPostion} />
+				<h4>{positions[selectedPosition].name}</h4>
+				<p>{positions[selectedPosition].description}</p>
+				<CandidatesContainer>{filteredCandidates}</CandidatesContainer>
+			</main>
+		</div>
+	);
 };
 
 export default BallotPage;
