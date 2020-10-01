@@ -77,3 +77,19 @@ export const addFavorite = async (userID, candidateID) => {
         console.error(err);
     }
 };
+
+export const removeFavorite = async (userID, candidateID) => {
+    try {
+        const favs = await axios.get(`${apiBase}/favorites`)
+        const id = favs.data.find(el => el.user_id === userID && el.candidate_id === candidateID).id
+
+        const res = await axios.delete(`${apiBase}/favorites/${id}`);
+        if (res.status === 201) {
+            return res.data;
+        } else {
+            console.error("Favorite adding failed, try again?");
+        }
+    } catch (err) {
+        console.error(err);
+    }
+};
