@@ -66,7 +66,7 @@ const UserDashboard = ({ history }) => {
             <CandidatesContainer>
                 {favorites}
             </CandidatesContainer>
-            <Button className="polling-link" as='a' href="https://www.usa.gov/register-to-vote">
+            <Button className="polling-link" as='a' href="https://www.vote.org/">
                 Your Polling Place <BoxArrowUpRight className="icon white" />
             </Button>
         </UserDashboardStyled>
