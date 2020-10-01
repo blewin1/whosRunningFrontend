@@ -33,7 +33,7 @@ const UserDashboard = ({ history }) => {
     // 	);
     // }
 
-    if (!user) return <span>loading...</span>;
+    if (!user || !user.candidates) return <span>loading...</span>;
 
     const favorites = user.candidates.map((el, i) => {
         return (
