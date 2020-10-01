@@ -33,7 +33,6 @@ export default styled.div`
 	.ballotDescription {
 		font-family: Noto Sans;
 		font-style: normal;
-		font-weight: 500;
 		font-size: 12px;
 		line-height: 150%;
 		color: #29395f;
@@ -51,6 +50,11 @@ export default styled.div`
 		.positionName {
 			font-size: 18px;
 			line-height: 23px;
+		}
+		.ballotDescription {
+			font-size: 12px;
+			line-height: 150%;
+			color: #29395f;
 		}
 	}
 `;
