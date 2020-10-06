@@ -157,6 +157,8 @@ export default styled.div`
         bottom: 60.83%;
 		svg {
 			color: #1FBCDE;
-		}
+        }
+    .pics{
+        padding-top: 700px;
     }
 `;

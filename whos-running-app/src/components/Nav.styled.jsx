@@ -10,6 +10,7 @@ export default styled.div`
 	.header {
 		background-color: #1fbcde;
 		position: relative;
+		float: right;
 		width: 95vw;
 		height: 85px;
 		font-family: Noto Sans;
@@ -32,7 +33,8 @@ export default styled.div`
 		.whosIcon {
 			text-align: left;
 			bottom: 60px;
-			left: 1rem;
+			float: right;
+			padding-right: 40px;
 			width: 25%;
 			height: 70%;
 		}
