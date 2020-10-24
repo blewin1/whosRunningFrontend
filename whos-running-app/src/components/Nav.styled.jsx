@@ -16,13 +16,13 @@ export default styled.div`
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 700;
-
+		text-align: right;
+		line-height: 22px;
 		padding: 1rem 1rem 2rem 1rem;
 		color: white;
 	}
 	.signIn {
-		text-align: right;
-		line-height: 16px;
+		font-size: 12px;
 	}
 	@media (max-width: 700px) {
 		.header {
@@ -31,8 +31,8 @@ export default styled.div`
 		}
 		.whosIcon {
 			text-align: left;
-			bottom: 60px;
-			left: 1rem;
+			bottom: 110px;
+			left: 2rem;
 			width: 25%;
 			height: 70%;
 		}
