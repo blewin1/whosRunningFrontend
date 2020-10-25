@@ -21,7 +21,7 @@ const HeaderNav = ({ history }) => {
 
 	return (
 		<NavStyled>
-			<div>
+			<div className='headerNav'>
 				<header className='header'>
 					{user ? (
 						<span>
@@ -45,7 +45,9 @@ const HeaderNav = ({ history }) => {
 						</p>
 					)}
 				</header>
+			<a href='/dashboard' >
 				<img src={whosIcon} alt='icon' className='whosIcon' />
+				</a>	
 				{loginOpen ? (
 					<Modal close={closeLogin}>
 						<Login closeLogin={closeLogin} />

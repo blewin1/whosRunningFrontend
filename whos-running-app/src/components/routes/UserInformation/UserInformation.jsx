@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserInformation = (props) => {
     return (
-        <div>
+        <div className='userInfo'>
             <h2>Name: </h2>
         </div>
     )

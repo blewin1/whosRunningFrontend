@@ -1,40 +1,39 @@
 import styled from 'styled-components';
 
 export default styled.div`
+	.headerNav {
+		background-color: #1fbcde;
+		padding: 1rem 1rem 0rem 0rem;
+		height: 150px;
+	}
 	.whosIcon {
 		text-align: left;
 		position: relative;
-		bottom: 60px;
+		bottom: 70px;
 		left: 2.5rem;
 	}
 	.header {
-		background-color: #1fbcde;
-		position: relative;
-		width: 95vw;
-		height: 85px;
 		font-family: Noto Sans;
-		font-size: 18px;
+		font-size: 20px;
 		font-style: normal;
 		font-weight: 700;
 		text-align: right;
 		line-height: 22px;
-		padding: 1rem 1rem 2rem 1rem;
 		color: white;
 	}
 	.signIn {
 		font-size: 12px;
 	}
 	@media (max-width: 700px) {
+		.headerNav {
+			height: 110px;
+		}
 		.header {
 			position: relative;
-			width: 91%;
 		}
 		.whosIcon {
 			text-align: left;
-			bottom: 110px;
-			left: 2rem;
-			width: 25%;
-			height: 70%;
+			left: 1rem;
 		}
 	}
 `;
